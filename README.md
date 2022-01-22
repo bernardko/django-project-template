@@ -46,7 +46,7 @@ pipenv shell
 Instead of using Django's `python manage.py runserver` command (feel free to still use it), use uvicorn to start the ASGI app with the `--reload` switch so that we can properly run async functions while autoreloading code when you make changes:
 
 ```bash
-uvicorn project_name.asgi:app --reload --port 8000
+uvicorn project_name.asgi:application --reload --port 8000
 ```
 
 The project is already set up to serve static files when `DEBUG=True` so the Django admin will work right out of the box.
@@ -94,7 +94,7 @@ The supervisor configuration file should look something like this:
 ```
 [fcgi-program:project_name-uvicorn]
 socket=tcp://127.0.0.1:25000
-command=pipenv run uvicorn --fd 0 project_name.asgi:app
+command=pipenv run uvicorn --fd 0 project_name.asgi:application
 directory=/path/to/project_name/
 numprocs=4
 process_name=%(process_num)d
