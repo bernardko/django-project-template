@@ -22,7 +22,7 @@ env = environ.Env()
 # SECURITY WARNING: don't run with debug turned on in production
 DEBUG = env.bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[])
 
 # Application definition
 
